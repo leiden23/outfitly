@@ -1,33 +1,39 @@
-import { Column } from "../shared/ui/column/column"
+import { Column } from "../shared/ui/column"
+import styles from './style.module.css'
 
 function App() {
 
-  return (
-    <>
-    <Column gap={5}>
-      <div style={{
-        width: 200,
-        height: 44,
-        backgroundColor: 'red'
-      }}/>
-      <div style={{
-        width: 200,
-        height: 44,
-        backgroundColor: 'green'
-      }}/>
-      <div style={{
-        width: 200,
-        height: 44,
-        backgroundColor: 'red'
-      }}/>
-      <div style={{
-        width: 200,
-        height: 44,
-        backgroundColor: 'red'
-      }}/>
-    </Column>
-    </>
-  )
+    return (
+        <>
+            <Column 
+                gap={5} 
+                width={600}
+                className={styles.div}
+                
+                >
+                <div style={{
+                    width: 200,
+                    height: 44,
+                    backgroundColor: 'red'
+                }} />
+                <div style={{
+                    width: 200,
+                    height: 44,
+                    backgroundColor: 'green'
+                }} />
+                <div style={{
+                    width: 200,
+                    height: 44,
+                    backgroundColor: 'red'
+                }} />
+                <div style={{
+                    width: 200,
+                    height: 44,
+                    backgroundColor: 'red'
+                }} />
+            </Column>
+        </>
+    )
 }
 
 export default App
