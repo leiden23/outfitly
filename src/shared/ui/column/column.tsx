@@ -1,5 +1,6 @@
 import type { FC, HTMLAttributes } from "react"
 import styles from './style.module.css'
+import clsx from "clsx"
 
 type ColumnProps = HTMLAttributes<HTMLDivElement> & {
     gap: number;
@@ -9,11 +10,8 @@ type ColumnProps = HTMLAttributes<HTMLDivElement> & {
 
 export const Column: FC<ColumnProps> = ({gap, children, style, width, height, ...props}) => {
     return (
-        <div {...props} className={`${styles.div} ${props.className || ''}`} style={{...style, gap, width, height}}>
+        <div {...props} style={{gap, width, height, ...style}} className={clsx(styles.div, props.className)}>
             {children}
         </div>
     )
 }
-// - сделать компоненты Row, Column которые представляют из себя ряд и колонку,
-// принимают children, gap (расстояние между элементами children в number) 
-// и должны содержать еще дефолтные пропсы типа onClick, style, className и тд, разместить компоненты по FSD
