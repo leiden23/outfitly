@@ -10,7 +10,7 @@
     background-color: transparent;
     border: 2px solid white;
     border-radius: 100%;
-    background: url('/arrow-left.svg');
+    background: url('/img/arrow-left.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -20,17 +20,17 @@
     background-color: transparent;
     border: 2px solid white;
     border-radius: 100%;
-    background: url('/arrow-right.svg');
+    background: url('/img/arrow-right.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
 .triangle-left {
     width: 25px;
     height: 42px;
-    background: url('/triangle-left.svg');
+    background: url('/img/triangle-left.svg');
 }
 .triangle-right {
     width: 25px;
     height: 42px;
-    background: url('/triangle-right.svg');
+    background: url('/img/triangle-right.svg');
 }

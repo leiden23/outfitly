@@ -1,5 +1,5 @@
 import type { FC } from "react"
-import { Button, Column } from "../../../shared"
+import { Button, Column } from "@/shared"
 import styles from './style.module.css'
 
 type GenerationResultProps = {

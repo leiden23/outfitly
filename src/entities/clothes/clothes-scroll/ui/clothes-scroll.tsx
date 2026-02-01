@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import { Row } from "../../../../shared/ui/row";
-import { ArrowButton } from "../../../../shared/ui/arrow-button";
-import { Card } from "../../../../shared/ui/card";
+import { Row } from "@/shared/ui/row";
+import { ArrowButton } from "@/shared/ui/arrow-button";
+import { Card } from "@/shared/ui/card";
 
 export const ClothesScroll: FC = () => {
     return (

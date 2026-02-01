@@ -1,7 +1,7 @@
 import type { FC } from "react"
-import { Column } from "../../../shared"
-import { ClothesScroll } from "../../../entities/clothes/clothes-scroll"
-import { Button } from "../../../shared"
+import { Column } from "@/shared"
+import { ClothesScroll } from "@/entities/clothes/clothes-scroll"
+import { Button } from "@/shared"
 
 
 export const GenerationPanel: FC = () => {

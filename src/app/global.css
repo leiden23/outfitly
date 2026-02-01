@@ -3,3 +3,22 @@
     padding: 0;
     margin: 0;
 }
+
+@font-face {
+    font-family: 'Soyuz Grotesk';
+    src: url('/fonts/SoyuzGroteskBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}

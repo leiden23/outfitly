@@ -6,23 +6,37 @@
 
 .text {
     background-color: transparent;
-    color: #000
+    color: #000;
+    font-family: "Soyuz Grotesk";
+    font-size: 24px;
 }
 
 .filled-beige {
     background-color: #DECEB4;
     border-radius: 15px;
     padding: 5px 24px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 20px;
+    font-size: 24px;
 }
 .filled-danger {
     background-color: #DEB4B4;
     border-radius: 15px;
     padding: 5px 24px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 20px;
+
 }
 .filled-gray {
     background-color: #C6C6C6;
     border-radius: 15px;
     padding: 5px 24px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 20px;
+
 }
 
 .outlined-white {
@@ -30,12 +44,18 @@
     background-color: transparent;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 20px;
 }
 .outlined-gray {
     border-radius: 15px;
     background-color: transparent;
     color: #C6C6C6;
     border: 2px solid #C6C6C6;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .small {
