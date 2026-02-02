@@ -1,0 +1,12 @@
+.panel {
+    width: 171px;
+    height: 504px;
+    border-radius: 15px;
+    background-color: rgba(204, 204, 204, 0.42);
+}
+
+.window {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}

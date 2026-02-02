@@ -4,6 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import { globalIgnores } from 'eslint/config'
+import importPlugin from 'eslint-plugin-import'
+
 
 export default tseslint.config([
   globalIgnores(['dist']),
@@ -14,10 +16,17 @@ export default tseslint.config([
       tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
+      importPlugin.configs.recommended,
+      importPlugin.configs.typescript,
     ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      'no-console': 'warn',  // Предупреждение на console.log
+      'no-debugger': 'error', // Ошибка на debugger
+      '@typescript-eslint/no-unused-vars': 'error',
+    }
   },
 ])
