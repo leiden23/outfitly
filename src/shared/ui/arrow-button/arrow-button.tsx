@@ -9,7 +9,7 @@ type ArrowButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export const ArrowButton: FC<ArrowButtonProps> = ({variant, color, className, children, ...props}) => {
     return (
-        <button {...props} className={clsx(styles.button, styles[variant], styles[color], className)}>
+        <button {...props} className={clsx(styles.button, styles[variant], color && styles[color], className)}>
             {children}
         </button>
     )
