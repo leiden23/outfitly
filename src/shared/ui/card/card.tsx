@@ -3,8 +3,8 @@ import clsx from "clsx";
 import styles from './style.module.css'
 
 type CardProps = {
-    width: string | number;
-    height: string | number;
+    width?: string | number;
+    height?: string | number;
     children?: React.ReactNode;
     style?: CSSProperties;
     className?: string;

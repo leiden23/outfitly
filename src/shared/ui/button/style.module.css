@@ -1,7 +1,7 @@
 .button {
     cursor: pointer;
     border: none;
-    width: fit-content;
+    border-radius: 15px;
 }
 
 .text {
@@ -13,7 +13,6 @@
 
 .filled-beige {
     background-color: #DECEB4;
-    border-radius: 15px;
     padding: 5px 24px;
     font-family: "Montserrat";
     font-weight: 600;
@@ -22,7 +21,6 @@
 }
 .filled-danger {
     background-color: #DEB4B4;
-    border-radius: 15px;
     padding: 5px 24px;
     font-family: "Montserrat";
     font-weight: 600;
@@ -31,7 +29,6 @@
 }
 .filled-gray {
     background-color: #C6C6C6;
-    border-radius: 15px;
     padding: 5px 24px;
     font-family: "Montserrat";
     font-weight: 600;
@@ -40,7 +37,6 @@
 }
 
 .outlined-white {
-    border-radius: 15px;
     background-color: transparent;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
@@ -49,7 +45,6 @@
     font-size: 20px;
 }
 .outlined-gray {
-    border-radius: 15px;
     background-color: transparent;
     color: #C6C6C6;
     border: 2px solid #C6C6C6;
@@ -59,16 +54,16 @@
 }
 
 .small {
-    width: 165px;
-    height: 30px;
+    padding: 5px 35px;
+    font-size: 16px;
 }
 
 .medium {
-    width: 180px;
-    height: 35px;
+    padding: 5px 25px;
+    font-size: 20px;
 }
 
 .large {
-    width: 135px;
-    height: 60px;
+    padding: 8px 13px;
+    font-size: 18px;
 }

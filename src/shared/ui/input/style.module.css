@@ -1,0 +1,13 @@
+.input {
+    width: 456px;
+    height: 40px;
+    border: 1.5px solid #8F8F8F;
+    border-radius: 10px;
+    padding-left: 25px;
+}
+.input::placeholder {
+    font-family: 'Montserrat';
+    font-size: 13px;
+    font-weight: 500;
+    color: #8F8F8F;
+}

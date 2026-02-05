@@ -5,7 +5,7 @@ import styles from './style.module.css'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     variant: 'text' | 'filled-beige' | 'filled-danger' | 'filled-gray' | 'outlined-white' | 'outlined-gray';
-    size: 'small' | 'medium' | 'large' | 'none';
+    size?: 'small' | 'medium' | 'large' | 'none';
     children: React.ReactNode;
 }
 

@@ -12,7 +12,7 @@ export const ChangeAvatar: FC<ChangeAvatarProps> = ({imageSrc}) => {
             <div className={styles.window}>
                 <img src={imageSrc} alt="Аватар"/>
             </div>
-            <Button variant="outlined-white" size="large">Изменить аватар</Button>
+            <Button variant="outlined-white" size="large" style={{width: '135px'}}>Изменить аватар</Button>
         </Column>
     )
 }

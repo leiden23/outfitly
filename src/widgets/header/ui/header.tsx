@@ -6,7 +6,7 @@ import styles from './style.module.css'
 
 export const Header: FC = () => {
     return (
-        <Column gap={65} className={styles.header} width={254} alignItems={"center"} >
+        <Column gap={65} className={styles.header} width={254}>
             <h1 className={styles.logo}>outfitly</h1>
             <Column gap={20}>
                 <NavLink to='/generation' className={styles.link}>Генерация</NavLink>

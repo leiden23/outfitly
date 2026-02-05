@@ -1,0 +1,9 @@
+.page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/img/bg-registration.png);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
