@@ -1,0 +1,31 @@
+.padding {
+    padding: 24px 82px 35px 82px;
+}
+
+.title {
+    font-family: 'Soyuz Grotesk';
+    font-size: 20px;
+    letter-spacing: 0.1em;
+}
+
+.window {
+    width: 387px;
+    height: 254px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Soyuz Grotesk';
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: #919191;
+    border: 1px dashed black;
+    border-radius: 15px;
+}
+
+.text {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.blueText {
+    color: #87ACC5;
+}
