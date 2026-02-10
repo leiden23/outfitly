@@ -1,0 +1,1 @@
+export {DeleteClothesForm} from './ui'

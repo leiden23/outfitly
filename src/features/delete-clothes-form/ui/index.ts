@@ -1,0 +1,1 @@
+export {DeleteClothesForm} from './delete-clothes-form'

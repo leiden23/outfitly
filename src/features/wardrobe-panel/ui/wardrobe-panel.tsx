@@ -5,9 +5,10 @@ import { ArrowButton, Button, Column, Row } from "@/shared"
 
 type WardrobePanelProps = {
     onAddClick: () => void;
+    onDeleteClick: () => void;
 };
 
-export const WardrobePanel: FC<WardrobePanelProps> = ({onAddClick}) => {
+export const WardrobePanel: FC<WardrobePanelProps> = ({onAddClick, onDeleteClick}) => {
     const array = Array(16).fill({
         title: 'mock clothes',
         src: '/img/arrow-left.svg'
@@ -32,7 +33,12 @@ export const WardrobePanel: FC<WardrobePanelProps> = ({onAddClick}) => {
                     <ArrowButton variant="rounded-left" color="gray" />
                     <ArrowButton variant="rounded-right" color="gray" />
                 </Row>
-                <Button variant="outlined-gray" size="medium">Удалить</Button>
+                <Button 
+                    variant="outlined-gray" 
+                    size="medium"
+                    onClick={onDeleteClick}>    
+                        Удалить
+                </Button>
             </Row>
         </Column>
     )

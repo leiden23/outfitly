@@ -8,9 +8,9 @@ type AddClothesFormProps = {
 
 export const AddClothesForm: FC<AddClothesFormProps> = ({onClose}) => {
     return (
-        <Card className={styles.padding} width={551} height={407} color="white">
+        <Card className={styles.card} width={551} height={407} color="white">
             <Column gap={22} alignItems="center">
-                <h2 className={styles.title}>Добавление элемента одежды</h2>
+                <p className={styles.title}>Добавление элемента одежды</p>
                 <div className={styles.window}>
                     <p className={styles.text}>для загрузки фото перетащите его<br/>или<span className={styles.blueText}> откройте в файлах </span></p>
                 </div>

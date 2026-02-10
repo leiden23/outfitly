@@ -1,0 +1,20 @@
+.card {
+    padding: 24px 28px 26px 28px;
+}
+
+.title {
+    font-family: 'Soyuz Grotesk';
+    font-size: 20px;
+    letter-spacing: 0.1em;
+}
+
+.window {
+    width: 356px;
+    height: 446px;
+    border: 1px dashed black;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

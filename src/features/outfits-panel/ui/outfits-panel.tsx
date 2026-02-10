@@ -3,7 +3,11 @@ import styles from './style.module.css'
 import { OutfitsCard } from "@/entities/outfits/outfits-card";
 import { ArrowButton, Button, Column, Row } from "@/shared";
 
-export const OutfitsPanel: FC = () => {
+type OutfitsPanelProps = {
+    onDeleteClick: () => void;
+}
+
+export const OutfitsPanel: FC<OutfitsPanelProps> = ({onDeleteClick}) => {
     return (
         <Column gap={55}>
             <div style={{position: 'relative'}}>
@@ -24,7 +28,7 @@ export const OutfitsPanel: FC = () => {
                         <ArrowButton variant="rounded-left" color="white"/>
                         <ArrowButton variant="rounded-right" color="white"/>
                     </Row>
-                    <Button variant="outlined-white" size="medium">Удалить</Button>
+                    <Button variant="outlined-white" size="medium" onClick={(onDeleteClick)}>Удалить</Button>
                 </Row>
             </div>
         </Column>
