@@ -4,8 +4,7 @@ type ContentType = {
     isAuth: boolean;
     setIsAuth: (value: boolean) => void;
 }
-// eslint-disable-next-line react-refresh/only-export-components
-export const AuthContext = createContext<ContentType | null>(null)
+const AuthContext = createContext<ContentType | null>(null)
 
 export const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
     const [isAuth, setIsAuthState] = useState(() => {

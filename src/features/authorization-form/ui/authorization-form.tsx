@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { NavLink } from "react-router-dom";
 import styles from './style.module.css'
 import { Button, Card, Column, Input, Row } from "@/shared";
-import { useAuth } from "@/shared/lib/auth-context";
+import { useAuth } from "@/entities/user";
 
 export const AuthorizationForm: FC = () => {
     const { setIsAuth } = useAuth();

@@ -2,17 +2,16 @@ import { type FC } from "react"
 import { NavLink } from "react-router-dom"
 import { Column } from "../../../shared/ui/column"
 import styles from './style.module.css'
-// import { Button } from "@/shared"
-// import { useAuth } from "@/shared/lib/auth-context"
-
+import { Button } from "@/shared"
+import { useAuth } from "@/entities/user"
 
 export const Header: FC = () => {
-    // const {setIsAuth} = useAuth();
+    const {setIsAuth} = useAuth();
 
-    // const logout = () => {
-    //     setIsAuth(false)
-    //     localStorage.removeItem('auth')        
-    // }
+    const logout = () => {
+        setIsAuth(false)
+        localStorage.removeItem('auth')        
+    }
 
     return (
         <Column gap={65} className={styles.header} width={254}>
@@ -22,7 +21,7 @@ export const Header: FC = () => {
                 <NavLink to='/wardrobe' className={styles.link}>Гардероб</NavLink>
                 <NavLink to='/outfits' className={styles.link}>Образы</NavLink>
                 <NavLink to='/about' className={styles.link}>О проекте</NavLink>
-                {/* <Button variant="text" size="none" onClick={logout}>Выйти</Button> */}
+                <Button className={styles.link} variant="text" size="none" onClick={logout}>Выйти</Button>
             </Column>
         </Column>
     )

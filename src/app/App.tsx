@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ProtectedRoute } from "./propviders/router/protected-route"
 import { GenerationPage } from "@/pages/generation"
 import { Header } from "@/widgets/header"
 import { WardrobePage } from "@/pages/wardrobe"
@@ -6,8 +7,7 @@ import { OutfitsPage } from "@/pages/outfits"
 import { AboutPage } from "@/pages/about"
 import { RegistrationPage } from "@/pages/registration/ui/registration"
 import { AuthorizationPage } from "@/pages/authorization"
-import { AuthProvider } from "@/shared/lib/auth-context"
-import { ProtectedRoute } from "@/shared/lib/protected-route"
+import { AuthProvider } from "@/entities/user"
 
 function App() {
 
