@@ -4,7 +4,7 @@ type ContentType = {
     isAuth: boolean;
     setIsAuth: (value: boolean) => void;
 }
-const AuthContext = createContext<ContentType | null>(null)
+const AuthContext = createContext<ContentType | null>(null) 
 
 export const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
     const [isAuth, setIsAuthState] = useState(() => {

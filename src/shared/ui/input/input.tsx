@@ -1,12 +1,12 @@
-import type { FC } from "react";
+import type { FC, InputHTMLAttributes } from "react";
 import styles from './style.module.css'
 
-type InputProps = {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
     placeholder: string;
 }
 
-export const Input: FC<InputProps> = ({placeholder}) => {
+export const Input: FC<InputProps> = ({placeholder, ...props}) => {
     return (
-        <input className={styles.input} type="text" placeholder={placeholder}/>
+        <input {...props} className={styles.input} type="text" placeholder={placeholder}/>
     )
 }
