@@ -11,3 +11,14 @@
     font-weight: 500;
     color: #8F8F8F;
 }
+
+.error {
+    border: 1.5px solid #ac5454;
+}
+.errorMessage {
+    font-family: 'Soyuz Grotesk';
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding-left: 23px;
+    color: #ac5454;
+}
