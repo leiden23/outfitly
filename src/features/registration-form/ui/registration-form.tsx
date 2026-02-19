@@ -1,13 +1,20 @@
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
+import { z } from 'zod'
 import { register } from "../api/register"
 import styles from './style.module.css'
 import { Button, Card, Column, Input, Row } from "@/shared"
 import { useAuth } from "@/entities/user"
 
-const nameRegex = /^[a-zA-Zа-яА-Я\s]+$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passRegex = /^.{6,}$/;
+const schema = z.object({
+    name: z.string().trim().min(1, 'введите имя').regex(/^[a-zA-Zа-яА-Я\s]+$/, 'некорректные символы'),
+    email: z.string().trim().email('некорректный email'),
+    password: z.string().min(6, 'минимум 6 символов'),
+    password2: z.string().min(1, 'подтвердите пароль'),
+}).refine((data) => data.password === data.password2, {
+    path: ['password2'],
+    message: 'пароли не сопадают',
+});
 
 export const RegistrationForm = () => {
     const { setIsAuth } = useAuth()
@@ -20,22 +27,7 @@ export const RegistrationForm = () => {
     const [clickPass, setClickPass] = useState(false)
     const [clickPass2, setClickPass2] = useState(false)
 
-    const isNameValid = useMemo(() => 
-        !!name && nameRegex.test(name)
-    , [name])
-
-    const isEmailValid = useMemo(() => 
-        !!email && emailRegex.test(email)
-    , [email])
-
-    const isPassword1Valid = useMemo(() =>
-        !!password && passRegex.test(password)
-    , [password])
-
-    const isPassword2Valid = useMemo(() =>
-        !!password2 && password === password2 && passRegex.test(password2)
-    , [password, password2])
-
+    const [errors, setErrors] = useState<Record<string, string>>({})
 
     const onRegister = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
@@ -43,14 +35,22 @@ export const RegistrationForm = () => {
         setClickEmail(true)
         setClickPass(true)
         setClickPass2(true)
-        if (
-            nameRegex.test(name) && emailRegex.test(email) && 
-            passRegex.test(password) && password === password2
-        ) 
-        {
-            register({ email, password, name })
-            setIsAuth(true);
+
+        const result = schema.safeParse({name, email, password, password2})
+            
+        if (!result.success) {
+            const fieldErrors = result.error.flatten().fieldErrors;
+            setErrors({
+                name: fieldErrors.name?.[0] || '',
+                email: fieldErrors.email?.[0] || '',
+                password: fieldErrors.password?.[0] || '',
+                password2: fieldErrors.password2?.[0] || '',
+            });
+            return;
         }
+        setErrors({});
+        register({ name, email, password })
+        setIsAuth(true);
     }
 
     return (
@@ -61,8 +61,8 @@ export const RegistrationForm = () => {
                     <Column gap={12}>
                         <Input 
                             onBlur={() => setClickName(true)} 
-                            error={clickName && !isNameValid}
-                            errorMessage="некорретные символы" 
+                            error={clickName && !!errors.name}
+                            errorMessage={errors.name}
                             value={name} 
                             onInput={(e) => setName(e.currentTarget.value)} 
                             placeholder="Введите имя" 
@@ -70,8 +70,8 @@ export const RegistrationForm = () => {
                         />
                         <Input
                             onBlur={() => setClickEmail(true)}
-                            error={clickEmail && !isEmailValid}
-                            errorMessage="некорретный email"
+                            error={clickEmail && !!errors.email}
+                            errorMessage={errors.email}
                             value={email}
                             onInput={(e) => setEmail(e.currentTarget.value)}
                             placeholder="Введите email"
@@ -79,8 +79,8 @@ export const RegistrationForm = () => {
                         />
                         <Input 
                             onBlur={() => setClickPass(true)} 
-                            error={clickPass && !isPassword1Valid} 
-                            errorMessage="минимум 6 символов" 
+                            error={clickPass && !!errors.password} 
+                            errorMessage={errors.password} 
                             value={password} 
                             onInput={(e) => setPassword(e.currentTarget.value)} 
                             placeholder="Введите пароль" 
@@ -88,8 +88,8 @@ export const RegistrationForm = () => {
                         />
                         <Input 
                             onBlur={() => setClickPass2(true)} 
-                            error={clickPass2 && !isPassword2Valid}
-                            errorMessage="пароли не совпадают" 
+                            error={clickPass2 && !!errors.password2}
+                            errorMessage={errors.password2} 
                             value={password2} 
                             onInput={(e) => setPassword2(e.currentTarget.value)} 
                             placeholder="Введите пароль еще раз"                             
