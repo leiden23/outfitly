@@ -25,7 +25,7 @@ export const RegistrationForm = () => {
     const { 
         register, 
         handleSubmit, 
-        formState: { errors, touchedFields}
+        formState: { errors }
     } = useForm<FormData>({
         resolver: zodResolver(schema),
         mode: 'onTouched',
@@ -44,28 +44,28 @@ export const RegistrationForm = () => {
                     <Column gap={12}>
                         <Input 
                             {...register('name')}
-                            error={touchedFields.name && !!errors.name}
+                            error={!!errors.name}
                             errorMessage={errors.name?.message}
                             placeholder="Введите имя" 
                             type="text"
                         />
                         <Input
                             {...register('email')}
-                            error={touchedFields.email && !!errors.email}
+                            error={!!errors.email}
                             errorMessage={errors.email?.message}
                             placeholder="Введите email"
                             type="email"
                         />
                         <Input 
                             {...register('password')}
-                            error={touchedFields.password && !!errors.password} 
+                            error={!!errors.password} 
                             errorMessage={errors.password?.message} 
                             placeholder="Введите пароль" 
                             type="password"
                         />
                         <Input 
                             {...register('password2')}
-                            error={touchedFields.password2 && !!errors.password2}
+                            error={!!errors.password2}
                             errorMessage={errors.password2?.message} 
                             placeholder="Введите пароль еще раз"                             
                             type="password"
