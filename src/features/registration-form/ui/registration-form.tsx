@@ -1,7 +1,8 @@
-import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { z } from 'zod'
-import { register } from "../api/register"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { register as registerUser } from "../api/register"
 import styles from './style.module.css'
 import { Button, Card, Column, Input, Row } from "@/shared"
 import { useAuth } from "@/entities/user"
@@ -13,43 +14,25 @@ const schema = z.object({
     password2: z.string().min(1, 'подтвердите пароль'),
 }).refine((data) => data.password === data.password2, {
     path: ['password2'],
-    message: 'пароли не сопадают',
+    message: 'пароли не совпадают',
 });
+
+type FormData = z.infer<typeof schema> //= type FormData = { name: string; email: string; password: string; password2: string; }
 
 export const RegistrationForm = () => {
     const { setIsAuth } = useAuth()
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [password2, setPassword2] = useState('');
-    const [clickName, setClickName] = useState(false)
-    const [clickEmail, setClickEmail] = useState(false)
-    const [clickPass, setClickPass] = useState(false)
-    const [clickPass2, setClickPass2] = useState(false)
 
-    const [errors, setErrors] = useState<Record<string, string>>({})
+    const { 
+        register, 
+        handleSubmit, 
+        formState: { errors, touchedFields}
+    } = useForm<FormData>({
+        resolver: zodResolver(schema),
+        mode: 'onTouched',
+    });
 
-    const onRegister = async (event: { preventDefault: () => void }) => {
-        event.preventDefault();
-        setClickName(true)
-        setClickEmail(true)
-        setClickPass(true)
-        setClickPass2(true)
-
-        const result = schema.safeParse({name, email, password, password2})
-            
-        if (!result.success) {
-            const fieldErrors = result.error.flatten().fieldErrors;
-            setErrors({
-                name: fieldErrors.name?.[0] || '',
-                email: fieldErrors.email?.[0] || '',
-                password: fieldErrors.password?.[0] || '',
-                password2: fieldErrors.password2?.[0] || '',
-            });
-            return;
-        }
-        setErrors({});
-        register({ name, email, password })
+    const onSubmit = (data: FormData) => {
+        registerUser({ name: data.name, email: data.email, password: data.password });
         setIsAuth(true);
     }
 
@@ -60,38 +43,30 @@ export const RegistrationForm = () => {
                     <h1 className={styles.logo}>outfitly</h1>
                     <Column gap={12}>
                         <Input 
-                            onBlur={() => setClickName(true)} 
-                            error={clickName && !!errors.name}
-                            errorMessage={errors.name}
-                            value={name} 
-                            onInput={(e) => setName(e.currentTarget.value)} 
+                            {...register('name')}
+                            error={touchedFields.name && !!errors.name}
+                            errorMessage={errors.name?.message}
                             placeholder="Введите имя" 
                             type="text"
                         />
                         <Input
-                            onBlur={() => setClickEmail(true)}
-                            error={clickEmail && !!errors.email}
-                            errorMessage={errors.email}
-                            value={email}
-                            onInput={(e) => setEmail(e.currentTarget.value)}
+                            {...register('email')}
+                            error={touchedFields.email && !!errors.email}
+                            errorMessage={errors.email?.message}
                             placeholder="Введите email"
                             type="email"
                         />
                         <Input 
-                            onBlur={() => setClickPass(true)} 
-                            error={clickPass && !!errors.password} 
-                            errorMessage={errors.password} 
-                            value={password} 
-                            onInput={(e) => setPassword(e.currentTarget.value)} 
+                            {...register('password')}
+                            error={touchedFields.password && !!errors.password} 
+                            errorMessage={errors.password?.message} 
                             placeholder="Введите пароль" 
                             type="password"
                         />
                         <Input 
-                            onBlur={() => setClickPass2(true)} 
-                            error={clickPass2 && !!errors.password2}
-                            errorMessage={errors.password2} 
-                            value={password2} 
-                            onInput={(e) => setPassword2(e.currentTarget.value)} 
+                            {...register('password2')}
+                            error={touchedFields.password2 && !!errors.password2}
+                            errorMessage={errors.password2?.message} 
                             placeholder="Введите пароль еще раз"                             
                             type="password"
                         />
@@ -108,7 +83,8 @@ export const RegistrationForm = () => {
                     <Button
                         variant="outlined-white"
                         className={styles.signUpButton}
-                        onClick={onRegister}>
+                        onClick={handleSubmit(onSubmit)}
+                        type="submit">
                         Зарегестрироваться
                     </Button>
                 </Row>
