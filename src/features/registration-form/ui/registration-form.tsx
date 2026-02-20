@@ -2,20 +2,12 @@ import { NavLink } from "react-router-dom"
 import { z } from 'zod'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { register as registerUser } from "../api/register"
+import { registerUser } from "../api/register"
+import { schema } from "../lib/schema"
 import styles from './style.module.css'
 import { Button, Card, Column, Input, Row } from "@/shared"
 import { useAuth } from "@/entities/user"
 
-const schema = z.object({
-    name: z.string().trim().min(1, 'введите имя').regex(/^[a-zA-Zа-яА-Я\s]+$/, 'некорректные символы'),
-    email: z.string().trim().email('некорректный email'),
-    password: z.string().min(6, 'минимум 6 символов'),
-    password2: z.string().min(1, 'подтвердите пароль'),
-}).refine((data) => data.password === data.password2, {
-    path: ['password2'],
-    message: 'пароли не совпадают',
-});
 
 type FormData = z.infer<typeof schema> //= type FormData = { name: string; email: string; password: string; password2: string; }
 
